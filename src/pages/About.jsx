@@ -1,4 +1,18 @@
-import { ArrowRight, Check, Leaf, Users, Utensils, Sparkles } from "lucide-react"
+import {
+  Accessibility,
+  ArrowRight,
+  Baby,
+  Check,
+  CircleParking,
+  Coffee,
+  CreditCard,
+  Leaf,
+  MapPin,
+  Sparkles,
+  Table2,
+  Utensils,
+  Users,
+} from "lucide-react"
 import { Link } from "react-router-dom"
 import { restaurant } from "../data"
 
@@ -6,7 +20,99 @@ const values = [
   [Leaf, "100% Vegetarian", "Every item on this site reflects the restaurant's pure-veg positioning."],
   [Sparkles, "Fresh Daily", "Everyday food, prepared for the people who come in every day."],
   [Utensils, "South Indian Roots", "A menu led by dosa, idli, wada and familiar South Indian favourites."],
-  [Users, "Community Favourite", "4.1★ from 5,717 ratings gives a clear measure of local trust."]
+  [Users, "Community Favourite", "4.1★ from 5,717 ratings gives a clear measure of local trust."],
+]
+
+const practicalDetails = [
+  {
+    icon: Accessibility,
+    title: "Accessibility",
+    items: [
+      "Wheelchair-accessible car park",
+      "Wheelchair-accessible entrance",
+      "Wheelchair-accessible seating",
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: "Service options",
+    items: [
+      "Outdoor seating",
+      "No-contact delivery",
+      "Delivery",
+      "On-site services",
+      "Takeaway",
+      "Dine-in",
+    ],
+  },
+  {
+    icon: Coffee,
+    title: "Highlights",
+    items: ["Great dessert", "Great tea selection"],
+  },
+  {
+    icon: Utensils,
+    title: "Popular for",
+    items: ["Breakfast", "Lunch", "Dinner", "Solo dining"],
+  },
+  {
+    icon: Leaf,
+    title: "Offerings",
+    items: [
+      "All you can eat",
+      "Coffee",
+      "Healthy options",
+      "Quick bite",
+      "Small plates",
+      "Vegan options",
+      "Vegetarian options",
+      "Vegetarian options only",
+      "Cuisine",
+    ],
+  },
+  {
+    icon: Table2,
+    title: "Dining options",
+    items: [
+      "Breakfast",
+      "Brunch",
+      "Lunch",
+      "Dinner",
+      "Catering",
+      "Dessert",
+      "Seating",
+      "Table service",
+    ],
+  },
+  {
+    icon: Sparkles,
+    title: "Atmosphere",
+    items: ["Casual", "Trendy"],
+  },
+  {
+    icon: Users,
+    title: "Crowd",
+    items: ["Groups"],
+  },
+  {
+    icon: CreditCard,
+    title: "Payments",
+    items: ["Credit cards", "Debit cards", "NFC mobile payments"],
+  },
+  {
+    icon: Baby,
+    title: "Children",
+    items: ["Good for kids"],
+  },
+  {
+    icon: CircleParking,
+    title: "Parking",
+    items: [
+      "Free parking lot",
+      "Free street parking",
+      "Somewhat difficult to find a space",
+    ],
+  },
 ]
 
 export default function About() {
@@ -50,6 +156,44 @@ export default function About() {
                 <p>{copy}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section details-section">
+        <div className="container">
+          <div className="section-heading details-heading">
+            <div>
+              <div className="eyebrow"><span></span> Good to know</div>
+              <h2>Everything you need<br/><em>before you visit.</em></h2>
+            </div>
+            <p>Quick details about accessibility, services, dining, parking and the experience at Prasanna Pure Veg.</p>
+          </div>
+
+          <div className="details-grid">
+            {practicalDetails.map(({ icon: Icon, title, items }) => (
+              <article className="detail-card" key={title}>
+                <div className="detail-card-top">
+                  <span className="detail-icon"><Icon size={18} strokeWidth={1.7} /></span>
+                  <span className="detail-count">{String(items.length).padStart(2, "0")}</span>
+                </div>
+                <h3>{title}</h3>
+                <ul>
+                  {items.map(item => (
+                    <li key={item}><Check size={13} /> <span>{item}</span></li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+
+          <div className="details-note">
+            <MapPin size={17} />
+            <div>
+              <strong>Planning a visit?</strong>
+              <span>{restaurant.address}</span>
+            </div>
+            <Link className="button button-outline" to="/visit">View location <ArrowRight size={16}/></Link>
           </div>
         </div>
       </section>

@@ -3,7 +3,9 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom"
+import { useLayoutEffect } from "react"
 
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -19,6 +21,16 @@ import { AuthProvider } from "./context/AuthContext"
 
 import "./styles.css"
 import "./premium.css"
+
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+  }, [pathname])
+
+  return null
+}
 
 function Layout({ children }) {
   return (
@@ -40,6 +52,7 @@ export default function App() {
       }}
     >
       <AuthProvider>
+        <ScrollToTop />
         <Routes>
           <Route path="/signin" element={<Auth mode="signin" />} />
           <Route path="/signup" element={<Auth mode="signup" />} />

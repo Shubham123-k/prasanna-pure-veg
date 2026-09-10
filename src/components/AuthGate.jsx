@@ -8,11 +8,11 @@ export default function AuthGate({ open, onClose, destination, label = "continue
 
   return (
     <div className="auth-modal-backdrop" role="presentation" onMouseDown={e => e.target === e.currentTarget && onClose()}>
-      <div className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-gate-title">
+      <div style={{ borderRadius: "30px" }} className="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-gate-title">
         <button className="modal-close" onClick={onClose} aria-label="Close"><X size={19}/></button>
         <div className="modal-icon"><LockKeyhole size={20}/></div>
         <div className="eyebrow"><span></span> Member access</div>
-        <h2 id="auth-gate-title">Sign in before you {label}.</h2>
+        <h2 style={{ color: "black" }} id="auth-gate-title">Sign in before you {label}.</h2>
         <p>To open ordering on Zomato or Swiggy, please sign in or create your Prasanna account first.</p>
         <div className="auth-modal-actions">
           <Link className="button button-primary" to={`/signin?redirect=${encodeURIComponent(destination || "/")}`} onClick={onClose}>Sign in <ArrowRight size={16}/></Link>

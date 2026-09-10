@@ -37,12 +37,16 @@ export default function Header() {
   }, [])
 
   const links = [["/", "Home"], ["/menu", "Menu"], ["/about", "About Us"], ["/visit", "Visit Us"]]
+
+  const handleNavigation = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+  }
   const solid = !isHome || scrolled || open
 
   return (
     <header className={`site-header ${solid ? "header-solid" : "header-transparent"} ${open ? "header-open" : ""}`}>
       <div className="container nav-wrap nav-wrap-premium">
-        <Link className="brand brand-premium" to="/" aria-label="Prasanna Pure Veg home">
+        <Link className="brand brand-premium" to="/" onClick={handleNavigation} aria-label="Prasanna Pure Veg home">
           <span className="brand-mark"><span>P</span></span>
           <span className="brand-copy"><strong>Prasanna</strong><small>PURE VEG · PASHAN</small></span>
         </Link>
@@ -50,7 +54,7 @@ export default function Header() {
         <nav className={`desktop-nav desktop-nav-premium ${open ? "mobile-open" : ""}`} aria-label="Main navigation">
           <div className="nav-links">
             {links.map(([href, label]) => (
-              <NavLink key={href} to={href} end={href === "/"}>{label}</NavLink>
+              <NavLink key={href} to={href} end={href === "/"} onClick={handleNavigation}>{label}</NavLink>
             ))}
           </div>
 
