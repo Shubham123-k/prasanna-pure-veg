@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "Prasanna Pure Veg",
+        "supportEmail": "shubhamkbind69@gmail.com"
+      }
+    }
+  }
+}
